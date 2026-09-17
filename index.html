@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Sheetal Akka ❤️</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+overflow-x:hidden;
+text-align:center;
+color:white;
+background:
+linear-gradient(135deg,#ff758c,#ff7eb3,#a18cd1);
+min-height:100vh;
+}
+
+/* =========================
+   BACKGROUND CONFETTI
+========================= */
+
+.background{
+position:fixed;
+inset:0;
+z-index:-5;
+overflow:hidden;
+}
+
+/* =========================
+   NAME
+========================= */
+
+.name{
+font-size:clamp(3rem,10vw,6rem);
+font-weight:900;
+margin-top:30px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{
+text-shadow:0 0 10px white;
+}
+to{
+text-shadow:
+0 0 20px white,
+0 0 40px #ff69b4,
+0 0 60px #ff1493;
+}
+}
+
+.subtitle{
+margin-top:10px;
+font-size:1.2rem;
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin:30px 0;
+}
+
+.box{
+background:rgba(255,255,255,.15);
+padding:15px;
+border-radius:15px;
+min-width:90px;
+}
+
+.box span{
+display:block;
+font-size:2rem;
+font-weight:bold;
+}
+
+/* =========================
+   CAKE
+========================= */
+
+.cake{
+font-size:100px;
+margin:20px 0;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+50%{
+transform:translateY(-10px);
+}
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button{
+padding:12px 24px;
+margin:10px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+background:#ff4081;
+color:white;
+font-size:1rem;
+}
+
+/* =========================
+   TYPEWRITER
+========================= */
+
+.message{
+max-width:800px;
+margin:25px auto;
+padding:20px;
+background:rgba(255,255,255,.15);
+border-radius:20px;
+line-height:1.8;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+#gift{
+display:none;
+margin:30px auto;
+max-width:850px;
+}
+
+.letter{
+position:relative;
+background:white;
+color:#333;
+padding:50px 25px;
+border-radius:25px;
+line-height:1.8;
+overflow:hidden;
+}
+
+.corner{
+position:absolute;
+width:100px;
+height:100px;
+object-fit:cover;
+border-radius:15px;
+border:4px solid white;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.top-left{
+top:10px;
+left:10px;
+}
+
+.top-right{
+top:10px;
+right:10px;
+}
+
+.bottom-left{
+bottom:10px;
+left:10px;
+}
+
+.bottom-right{
+bottom:10px;
+right:10px;
+}
+
+/* =========================
+   MEMORY GALLERY
+========================= */
+
+.memory-gallery img{
+width:100%;
+height:auto;
+max-height:550px;
+object-fit:contain;
+background:white;
+padding:10px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+/* =========================
+   WISH CARDS
+========================= */
+
+.card{
+max-width:700px;
+margin:15px auto;
+padding:20px;
+background:rgba(255,255,255,.15);
+border-radius:20px;
+}
+
+/* =========================
+   HEARTS
+========================= */
+
+.heart{
+position:fixed;
+font-size:22px;
+pointer-events:none;
+animation:rise linear forwards;
+}
+
+@keyframes rise{
+to{
+transform:translateY(-100vh);
+opacity:0;
+}
+}
+
+@media(max-width:768px){
+
+.name{
+font-size:2.7rem;
+}
+
+.cake{
+font-size:70px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="background"></div>
+
+<h1 class="name">💖 Sheetal Akka 💖</h1>
+
+<p class="subtitle">
+Happy Birthday To The Best Sister ❤️
+</p>
+
+<div class="countdown">
+
+<div class="box">
+<span id="days">0</span>
+Days
+</div>
+
+<div class="box">
+<span id="hours">0</span>
+Hours
+</div>
+
+<div class="box">
+<span id="minutes">0</span>
+Minutes
+</div>
+
+<div class="box">
+<span id="seconds">0</span>
+Seconds
+</div>
+
+</div>
+
+<div class="cake">🎂</div>
+
+<button onclick="blowCandle()">
+🕯️ Blow Candle
+</button>
+
+<button onclick="openGift()">
+🎁 Open Gift
+</button>
+
+<div id="typewriter" class="message"></div>
+
+<!-- HIDDEN LETTER -->
+
+<div id="gift">
+
+<div class="letter">
+
+<h2>
+💌 To My Dearest Sheetal Akka
+</h2>
+
+<p>
+    
+Happy Birthday, Akka! ❤️
+Today is a very special day because it celebrates someone who means so much to me. On your birthday, I want to take a moment to tell you how grateful I am to have you in my life.
+You have always been more than just a sister. You have been my guide, my supporter, my protector, and one of my closest friends. Through every happy moment and every difficult time, your love, care, and encouragement have always been there for me. No matter how busy life gets, knowing that I have a sister like you gives me comfort and strength.
+Thank you for all the sacrifices you have made, for the countless times you have helped me without expecting anything in return, and for the love you have shown in ways both big and small. Many of the lessons I have learned in life came from watching your kindness, patience, and determination.
+As you celebrate another beautiful year of life, I pray that happiness always finds its way to you. May your days be filled with laughter, your heart be filled with peace, and your dreams slowly turn into reality. May you always have the strength to overcome challenges and the courage to chase everything that makes you happy.
+You deserve all the love, success, and joy that life has to offer. I hope this year brings you wonderful opportunities, beautiful memories, good health, and countless reasons to smile.
+No matter where life takes us, one thing will never change—my love, respect, and gratitude for you. I will always be proud to call you my sister, and I will always cherish the bond we share.
+Thank you for being such an important part of my life. Thank you for being you.
+Happy Birthday, Sheetal Akka! 🎂🎉❤️
+May this year be one of the happiest and most memorable years of your life.
+With lots of love and warm wishes,
+    
+❤️ Your Loving Brother ❤️
+
+</p>
+
+</div>
+
+</div>
+
+<!-- MEMORIES -->
+
+<h2 style="margin-top:60px">
+📸 Memories With Sheetal Akka
+</h2>
+
+<div class="memory-gallery">
+
+<img src="photo1.png">
+<img src="photo2.png">
+<img src="photo3.png">
+<img src="photo4.png">
+
+</div>
+
+<!-- WISHES -->
+
+<h2 style="margin-top:50px">
+💌 Birthday Wishes
+</h2>
+
+<div class="card">
+❤️ Wishing you endless happiness and success.
+</div>
+
+<div class="card">
+🌸 May all your dreams come true.
+</div>
+
+<div class="card">
+✨ May your smile always shine bright.
+</div>
+
+<div class="card">
+🎂 Have a wonderful birthday and an amazing year ahead.
+</div>
+
+<!-- MUSIC -->
+
+<audio id="bgMusic" loop>
+<source src="happy_birthday_instr.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* COUNTDOWN */
+
+const targetDate =
+new Date("2026-09-18T00:00:00+05:30").getTime();
+
+setInterval(()=>{
+
+const now=new Date().getTime();
+const diff=targetDate-now;
+
+document.getElementById("days").innerText=
+Math.max(0,Math.floor(diff/(1000*60*60*24)));
+
+document.getElementById("hours").innerText=
+Math.max(0,Math.floor((diff%(1000*60*60*24))/(1000*60*60)));
+
+document.getElementById("minutes").innerText=
+Math.max(0,Math.floor((diff%(1000*60*60))/(1000*60)));
+
+document.getElementById("seconds").innerText=
+Math.max(0,Math.floor((diff%(1000*60))/1000));
+
+},1000);
+
+/* TYPEWRITER */
+
+const text=
+"Happy Birthday Sheetal Akka ❤️ Thank you for being such a wonderful sister. May your life always be filled with happiness, love, success and beautiful memories.";
+
+let i=0;
+
+function typeWriter(){
+
+if(i<text.length){
+
+document.getElementById("typewriter")
+.innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typeWriter,40);
+
+}
+
+}
+
+typeWriter();
+
+/* MUSIC */
+
+function startBirthdayMusic(){
+
+const music=
+document.getElementById("bgMusic");
+
+if(music.paused){
+
+music.volume=0.5;
+music.play().catch(()=>{});
+
+}
+
+}
+
+/* OPEN GIFT */
+
+function openGift(){
+
+startBirthdayMusic();
+
+document.getElementById("gift")
+.style.display="block";
+
+confetti({
+particleCount:250,
+spread:180
+});
+
+}
+
+/* BLOW CANDLE */
+
+function blowCandle(){
+
+startBirthdayMusic();
+
+confetti({
+particleCount:350,
+spread:180
+});
+
+alert(
+"🎉 Happy Birthday Sheetal Akka! ❤️"
+);
+
+}
+
+/* HEARTS */
+
+setInterval(()=>{
+
+const heart=
+document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=
+Math.random()*100+"vw";
+
+heart.style.bottom="0px";
+
+heart.style.animationDuration=
+(4+Math.random()*4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+
+},600);
+
+/* FIREWORKS */
+
+setInterval(()=>{
+
+confetti({
+particleCount:100,
+spread:120,
+origin:{
+x:Math.random(),
+y:Math.random()*0.5
+}
+});
+
+},2500);
+
+</script>
+
+</body>
+</html>
